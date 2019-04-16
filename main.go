@@ -1,12 +1,13 @@
 package main
 
 import (
-	"encoding/json"
-	//"io"
-	"io/ioutil"
-	"os"
+	// "encoding/json"
+	// //"io"
+	// "io/ioutil"
+	// "os"
+	"fmt"
 	//"path/filepath"
-	"github.com/chrisheath/time-tracker/pkg/logger"
+	"github.com/chrisheath/time-tracker/pkg/config"
 )
 
 type AppConfig struct {
@@ -14,8 +15,11 @@ type AppConfig struct {
 }
 
 func main() {
-	loadConfigFile()
+	appConfig := config.Load()
 
+	fmt.Println(appConfig)
+
+	// get todays timestamp
 	// check if file exists for today
 	// create file for today with timestamp
 	// check todays file for last action (last at bottom?)
@@ -28,6 +32,7 @@ func main() {
 	// checkError(err)
 	// // close always close
 	// defer file.Close()
+
 	// // write to file
 	// ln, err := io.WriteString(file, content)
 	// checkError(err)
@@ -52,8 +57,6 @@ func main() {
 	// decoder := json.NewDecoder(strings.NewReader(content))
 	// _, err := decoder.Token()
 	// checkError(err)
-
-	defer logger.Write([]string{"INFO:", "Finished!"})
 }
 
 // func processPath(path string, info os.FileInfo, err error) error {
@@ -70,27 +73,8 @@ func main() {
 // 	return nil
 // }
 
-func loadConfigFile() {
-	jsonFile, err := os.Open("./config.json")
-	if err != nil {
-		logger.Write([]string{"ERROR:", string(err.Error())})
-	}
-	defer jsonFile.Close()
-
-	appConfigData, err := ioutil.ReadAll(jsonFile)
-	if err != nil {
-		logger.Write([]string{"ERROR:", string(err.Error())})
-	}
-
-	var appConfig AppConfig
-
-	err = json.Unmarshal(appConfigData, &appConfig)
-	if err != nil {
-		logger.Write([]string{"ERROR:", string(err.Error())})
-	}
-
-	logger.Write([]string{"INFO:", "LOADED CONFIG :-"})
-	logger.Write([]string{"INFO:", "logs: ", appConfig.Logs})
-	logger.Write([]string{"INFO:", "fileFormat: ", appConfig.FileFormat})
-	logger.Write([]string{"INFO:", "logFormat: ", appConfig.LogFormat})
-}
+// func setTimestamp(*timeNow string) {
+// 	t := time.Now()
+// 	t.String()
+// 	timeNow := t.Format("2006-01-02--15-04-05")
+// }
