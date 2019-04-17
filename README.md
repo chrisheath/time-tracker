@@ -11,3 +11,5 @@ Todo
  - [ ] Remove build files from general dir (check golang example project setup)
  - [ ] replace hardcoded log/config locations with ones on init (maybe stored locally somehow after first run?)
  - [ ] tests
+ - [ ] How do we do versioning with go
+ - [ ] Add markdown docs (contributing etc)
