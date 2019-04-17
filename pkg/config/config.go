@@ -8,15 +8,20 @@ import (
 	"os"
 )
 
+type Config interface {
+	Load()
+}
+
 type AppConfig struct {
 	Logs, FileFormat, LogFormat string
 }
 
-func Load() AppConfig {
-	appConfig := AppConfig{}
-	configPath := build.Default.GOPATH + "/src/github.com/chrisheath/time-tracker/config.json"
+func GetConfig() AppConfig {
+	return AppConfig{}
+}
 
-	jsonFile, err := os.Open(configPath)
+func (a *AppConfig) Load() {
+	jsonFile, err := os.Open(build.Default.GOPATH + "/src/github.com/chrisheath/time-tracker/config.json")
 	if err != nil {
 		logger.Write([]string{"ERROR:", string(err.Error())})
 	}
@@ -27,15 +32,13 @@ func Load() AppConfig {
 		logger.Write([]string{"ERROR:", string(err.Error())})
 	}
 
-	err = json.Unmarshal(appConfigData, appConfig)
+	err = json.Unmarshal(appConfigData, a)
 	if err != nil {
 		logger.Write([]string{"ERROR:", string(err.Error())})
 	}
 
 	logger.Write([]string{"INFO:", "LOADED CONFIG :-"})
-	logger.Write([]string{"INFO:", "logs: ", appConfig.Logs})
-	logger.Write([]string{"INFO:", "fileFormat: ", appConfig.FileFormat})
-	logger.Write([]string{"INFO:", "logFormat: ", appConfig.LogFormat})
-
-	return appConfig
+	logger.Write([]string{"INFO:", "logs: ", a.Logs})
+	logger.Write([]string{"INFO:", "fileFormat: ", a.FileFormat})
+	logger.Write([]string{"INFO:", "logFormat: ", a.LogFormat})
 }

@@ -10,15 +10,13 @@ import (
 	"github.com/chrisheath/time-tracker/pkg/config"
 )
 
-type AppConfig struct {
-	Logs, FileFormat, LogFormat string
-}
-
 func main() {
-	appConfig := config.Load()
+	config := config.GetConfig()
+	config.Load()
 
-	fmt.Println(appConfig)
+	fmt.Printf("%+v\n", config)
 
+	// fmt.Println(config.AppConfig)
 	// get todays timestamp
 	// check if file exists for today
 	// create file for today with timestamp
