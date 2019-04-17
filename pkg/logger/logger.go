@@ -8,9 +8,7 @@ import (
 
 // Write line to log file
 func Write(logString []string) {
-	logPath := build.Default.GOPATH + "/src/github.com/chrisheath/time-tracker/log.txt"
-
-	var file, err = os.Open(logPath)
+	var file, err = os.OpenFile(build.Default.GOPATH+"/src/github.com/chrisheath/time-tracker/log.txt", os.O_APPEND, 0666)
 	defer file.Close()
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)

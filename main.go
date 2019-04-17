@@ -5,8 +5,8 @@ import (
 	// //"io"
 	// "io/ioutil"
 	// "os"
-	"fmt"
-	//"path/filepath"
+	// "fmt"
+	// "path/filepath"
 	"github.com/chrisheath/time-tracker/pkg/config"
 )
 
@@ -14,9 +14,6 @@ func main() {
 	config := config.GetConfig()
 	config.Load()
 
-	fmt.Printf("%+v\n", config)
-
-	// fmt.Println(config.AppConfig)
 	// get todays timestamp
 	// check if file exists for today
 	// create file for today with timestamp
