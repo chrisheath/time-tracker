@@ -2,3 +2,7 @@
 2019/04/17 10:10:41 INFO: logs:  c:/goprojects/src/github.com/chrisheath/time-tracker/logs 
 2019/04/17 10:10:41 INFO: fileFormat:  2006-01-02--15-04-05 
 2019/04/17 10:10:41 INFO: logFormat:  2006/01/02 15:04:05 
+2019/04/17 11:50:06 INFO: LOADED CONFIG :- 
+2019/04/17 11:50:06 INFO: logs:  c:/goprojects/src/github.com/chrisheath/time-tracker/logs 
+2019/04/17 11:50:06 INFO: fileFormat:  2006-01-02--15-04-05 
+2019/04/17 11:50:06 INFO: logFormat:  2006/01/02 15:04:05 
